@@ -1,4 +1,5 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { Pressable, StyleSheet, Text, View, Image } from "react-native";
+import { useState } from "react";
 import {
   Entypo,
   AntDesign,
@@ -9,7 +10,9 @@ import LikeImage from "../../assets/images/like.png";
 
 
 
-const FeedPost = ({post}) => {
+export default function FeedPost({post}) {
+  const [isLiked, setIsLiked] = useState(false);
+
   return (
     <View style={styles.post}>
         {/* Header */}
@@ -56,15 +59,31 @@ const FeedPost = ({post}) => {
           {/* Buttons row  */}
           <View style={styles.buttonsRow}>
             {/* like button */}
-            <View>
-              <AntDesign name="like2" size={18} color="gray" />
-              <Text style={styles.iconButtonText}>Like</Text>
+            <View style={styles.iconsButton}>
+              <Pressable
+                onPress={() => setIsLiked(!isLiked)} // <- onPrees event toggles isLiked
+                style={styles.iconButton}
+              >
+              <AntDesign 
+                name="like2" 
+                size={18} 
+                color={isLiked ? "royalblue" : "gray"} />
+              <Text 
+                style={[
+                  styles.iconButtonText,
+                  { color: isLiked ? "royalblue" : "gray" },
+                ]}
+              >
+                Like
+              </Text>
+            </Pressable>
+            
             </View>
             <View>
               <FontAwesome5 name="comment-alt" size={16} color="gray" />
               <Text style={styles.iconButtonText}>Comment</Text>
             </View>
-            <View>
+            <View style={styles.iconButton}>
               <MaterialCommunityIcons
                 name="share-outline"
                 size={18}
@@ -141,7 +160,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
   },
-  iconsButton: {
+  iconButton: {
     flexDirection: "row",
     alignItems: "center",
   },
@@ -151,5 +170,3 @@ const styles = StyleSheet.create({
     fontWeight: "500",
   },
 });
-
-export default FeedPost;
