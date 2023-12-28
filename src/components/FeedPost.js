@@ -9,8 +9,7 @@ import {
 import LikeImage from "../../assets/images/like.png";
 
 
-
-export default function FeedPost({post}) {
+export default function FeedPost({ post }) {
   const [isLiked, setIsLiked] = useState(false);
 
   return (
@@ -26,7 +25,7 @@ export default function FeedPost({post}) {
             <Text style={styles.subtitle}>{post.createdAt}</Text>
           </View>
           <Entypo
-            name="dots-thee-horizontal"
+            name="dots-three-horizontal"
             size={18}
             color="gray"
             style={styles.icon}
@@ -34,17 +33,15 @@ export default function FeedPost({post}) {
         </View>
 
         {/* body */}
+        <Text style={styles.description}>{post.description}</Text>
         {post.description && (
-          <Text style={styles.description}>{post.description}</Text>
-        )}
-
-        {post.image && (
           <Image
-            source={{ uri: post.image }}
+            source={{ uri: post.image}}
             style={styles.image}
             resizeMode="cover"
           />
         )}
+
 
         {/* footer */}
         <View style={styles.footer}>
@@ -77,7 +74,7 @@ export default function FeedPost({post}) {
               </Text>
             </Pressable>
             
-            <View>
+            <View style={styles.iconButton}>
               <FontAwesome5 name="comment-alt" size={16} color="gray" />
               <Text style={styles.iconButtonText}>Comment</Text>
             </View>
