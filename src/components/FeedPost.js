@@ -59,7 +59,6 @@ export default function FeedPost({post}) {
           {/* Buttons row  */}
           <View style={styles.buttonsRow}>
             {/* like button */}
-            <View style={styles.iconsButton}>
               <Pressable
                 onPress={() => setIsLiked(!isLiked)} // <- onPrees event toggles isLiked
                 style={styles.iconButton}
@@ -78,7 +77,6 @@ export default function FeedPost({post}) {
               </Text>
             </Pressable>
             
-            </View>
             <View>
               <FontAwesome5 name="comment-alt" size={16} color="gray" />
               <Text style={styles.iconButtonText}>Comment</Text>

@@ -1,8 +1,11 @@
-import FeedPost from "../components/FeedPost";
+import { FlatList } from 'react-native';
 import posts from '../../assets/data/posts';
 
-const FeedScreen = () => {
-  return <FeedPost />;
+export default function FeedScreen() {
+  return(
+    <FlatList
+        data={posts}
+        renderItem={() => <FeedPost post={item} />}
+      />
+  )
 };
-
-export default FeedScreen;
